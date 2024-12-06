@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.hotelreservation.controller.StaffLogsController"
+      spacing="20" styleClass="content-pane">
+    
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox styleClass="logs-header" spacing="20">
+        <VBox spacing="5">
+            <Text text="Staff Activity Logs" styleClass="page-title"/>
+            <Text text="View and monitor staff activities" styleClass="subtitle-text"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="filterPeriod" promptText="Time Period"
+                  styleClass="filter-combo"/>
+    </HBox>
+
+    <!-- Search and Filter Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="filter-section">
+        <TextField fx:id="searchField" promptText="Search logs..." 
+                  HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="actionFilter" promptText="Action Type"/>
+        <ComboBox fx:id="staffFilter" promptText="Staff Member"/>
+        <Button text="Search" onAction="#handleSearch" 
+                styleClass="primary-button"/>
+        <Button text="Export" onAction="#handleExport" 
+                styleClass="secondary-button"/>
+    </HBox>
+
+    <!-- Logs Table -->
+    <TableView fx:id="logsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="timestampColumn" text="Timestamp"/>
+            <TableColumn fx:id="staffIdColumn" text="Staff ID"/>
+            <TableColumn fx:id="staffNameColumn" text="Staff Name"/>
+            <TableColumn fx:id="actionColumn" text="Action"/>
+            <TableColumn fx:id="detailsColumn" text="Details"/>
+        </columns>
+        <placeholder>
+            <Label text="No logs found"/>
+        </placeholder>
+    </TableView>
+
+    <!-- Pagination -->
+    <HBox spacing="10" alignment="CENTER">
+        <Pagination fx:id="logsPagination" styleClass="logs-pagination"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@../styles/main.css"/>
+    </stylesheets>
+</VBox>

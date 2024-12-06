@@ -1,0 +1,130 @@
+/* Dark theme styles for the Hotel Management System */
+
+/* Menu Button Styles */
+.menu-button {
+    -fx-padding: 10 15;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+    -fx-alignment: center-left;
+    -fx-background-color: transparent;
+    -fx-text-fill: #e0e0e0;
+}
+
+.menu-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.side-panel {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 20;
+    -fx-min-width: 250;
+    -fx-pref-width: 250;
+    -fx-max-width: 250;
+}
+
+/* Content Pane Styles */
+.content-pane {
+    -fx-background-color: #1a1a1a;
+    -fx-padding: 20;
+    -fx-spacing: 15;
+    -fx-fill-width: true;
+}
+
+/* Settings Styles */
+.settings-header {
+    -fx-padding: 20;
+    -fx-background-color: #2c2c2c;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);
+    -fx-background-radius: 5;
+}
+
+.page-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-fill: #e0e0e0;
+}
+
+.subtitle-text {
+    -fx-font-size: 16px;
+    -fx-fill: #b0b0b0;
+}
+
+.setting-label {
+    -fx-text-fill: #e0e0e0;
+}
+
+.setting-toggle {
+    -fx-background-color: #2c3e50;
+    -fx-text-fill: #e0e0e0;
+}
+
+.setting-toggle:selected {
+    -fx-background-color: #3498db;
+}
+
+.setting-combo-box {
+    -fx-background-color: #2c3e50;
+    -fx-text-fill: #e0e0e0;
+}
+
+.note-text {
+    -fx-text-fill: #b0b0b0;
+    -fx-font-style: italic;
+}
+
+/* Form Control Styles */
+.text-field, .password-field {
+    -fx-padding: 8;
+    -fx-background-color: #2c2c2c;
+    -fx-border-color: #3c3c3c;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-text-fill: #e0e0e0;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-background-color: #333333;
+    -fx-border-color: #3498db;
+}
+
+/* Button Styles */
+.primary-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+}
+
+.primary-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* Dialog Styles */
+.dialog-pane {
+    -fx-background-color: #1a1a1a;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #2c3e50;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #e0e0e0;
+}
+
+.dialog-pane .content {
+    -fx-text-fill: #e0e0e0;
+}
+
+.dialog-pane .button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: #2980b9;
+}

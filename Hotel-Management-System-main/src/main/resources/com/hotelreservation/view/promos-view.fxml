@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.hotelreservation.controller.PromosController"
+      spacing="20" styleClass="content-pane">
+    
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox styleClass="profile-header" spacing="20">
+        <VBox spacing="5">
+            <Text text="Promotional Offers" styleClass="page-title"/>
+            <Text fx:id="subtitleText" styleClass="subtitle-text"/>
+        </VBox>
+    </HBox>
+
+    <!-- Create Promo Section (Admin Only) -->
+    <VBox fx:id="createPromoSection" spacing="10" styleClass="section">
+        <GridPane hgap="10" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints minWidth="100" prefWidth="150"/>
+                <ColumnConstraints minWidth="200" prefWidth="300"/>
+            </columnConstraints>
+
+            <Label text="Promo Code:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="promoCodeField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextArea fx:id="descriptionField" prefRowCount="2" 
+                     GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Discount Amount:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="discountField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="Valid From:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <DatePicker fx:id="validFromPicker" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <Label text="Valid Until:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <DatePicker fx:id="validUntilPicker" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        </GridPane>
+
+        <HBox alignment="CENTER_RIGHT">
+            <Button text="Create Promo" onAction="#handleCreatePromo"
+                    styleClass="primary-button"/>
+        </HBox>
+    </VBox>
+
+    <!-- Promos List -->
+    <TableView fx:id="promosTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="codeColumn" text="Code"/>
+            <TableColumn fx:id="descriptionColumn" text="Description"/>
+            <TableColumn fx:id="discountColumn" text="Discount"/>
+            <TableColumn fx:id="validFromColumn" text="Valid From"/>
+            <TableColumn fx:id="validUntilColumn" text="Valid Until"/>
+            <TableColumn fx:id="statusColumn" text="Status"/>
+            <TableColumn fx:id="actionsColumn" text="Actions"/>
+        </columns>
+    </TableView>
+
+    <stylesheets>
+        <URL value="@../styles/main.css"/>
+    </stylesheets>
+</VBox>

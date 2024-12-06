@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<?import javafx.stage.Popup?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.hotelreservation.controller.AvailabilityController"
+      spacing="20" styleClass="content-pane">
+    
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox styleClass="profile-header" spacing="20">
+        <VBox spacing="5">
+            <Text text="Room Availability Calendar" styleClass="page-title"/>
+            <Text text="View room availability and occupancy" styleClass="subtitle-text"/>
+        </VBox>
+    </HBox>
+
+    <!-- Filter Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <DatePicker fx:id="startDatePicker" promptText="Start Date"/>
+        <DatePicker fx:id="endDatePicker" promptText="End Date"/>
+        <ComboBox fx:id="roomTypeFilter" promptText="Room Type"/>
+        <ComboBox fx:id="floorFilter" promptText="Floor"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Today" onAction="#goToToday" styleClass="secondary-button"/>
+    </HBox>
+
+    <!-- Calendar Grid -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+        <GridPane fx:id="calendarGrid" hgap="1" vgap="1" styleClass="calendar-grid">
+            <!-- Column Headers (Dates) will be added dynamically -->
+            <!-- Row Headers (Room Numbers) will be added dynamically -->
+            <!-- Calendar cells will be added dynamically -->
+        </GridPane>
+    </ScrollPane>
+
+    <!-- Legend -->
+    <HBox spacing="20" alignment="CENTER_LEFT" styleClass="legend-section">
+        <HBox spacing="5" alignment="CENTER_LEFT">
+            <Region styleClass="legend-box, available"/>
+            <Label text="Available"/>
+        </HBox>
+        <HBox spacing="5" alignment="CENTER_LEFT">
+            <Region styleClass="legend-box, occupied"/>
+            <Label text="Occupied"/>
+        </HBox>
+        <HBox spacing="5" alignment="CENTER_LEFT">
+            <Region styleClass="legend-box, maintenance"/>
+            <Label text="Maintenance"/>
+        </HBox>
+        <HBox spacing="5" alignment="CENTER_LEFT">
+            <Region styleClass="legend-box, reserved"/>
+            <Label text="Reserved"/>
+        </HBox>
+    </HBox>
+
+    <!-- Room Details Popup -->
+    <fx:define>
+        <Popup fx:id="roomDetailsPopup">
+            <content>
+                <VBox styleClass="popup-content" spacing="10">
+                    <padding>
+                        <Insets top="10" right="15" bottom="10" left="15"/>
+                    </padding>
+                    <Text fx:id="roomNumberText" styleClass="popup-title"/>
+                    <Text fx:id="roomTypeText"/>
+                    <Text fx:id="roomStatusText"/>
+                    <Text fx:id="guestNameText"/>
+                    <Text fx:id="dateRangeText"/>
+                    <HBox spacing="10" alignment="CENTER_RIGHT">
+                        <Button text="Close" onAction="#closeRoomDetails"
+                                styleClass="secondary-button"/>
+                    </HBox>
+                </VBox>
+            </content>
+        </Popup>
+    </fx:define>
+
+    <stylesheets>
+        <URL value="@../styles/main.css"/>
+    </stylesheets>
+</VBox>

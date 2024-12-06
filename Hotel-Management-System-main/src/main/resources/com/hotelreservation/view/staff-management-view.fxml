@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.hotelreservation.controller.StaffManagementController"
+      spacing="20" styleClass="content-pane">
+    
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox styleClass="profile-header" spacing="20">
+        <VBox spacing="5">
+            <Text text="Staff Management" styleClass="page-title"/>
+            <Text text="Manage staff members and their shifts" styleClass="subtitle-text"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Add New Staff" onAction="#showAddStaffDialog"
+                styleClass="primary-button"/>
+    </HBox>
+
+    <!-- Search and Filter Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="filter-section">
+        <TextField fx:id="searchField" promptText="Search staff..." 
+                  HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="positionFilter" promptText="Position"/>
+        <Button text="Search" onAction="#handleSearch" 
+                styleClass="primary-button"/>
+    </HBox>
+
+    <!-- Staff Table -->
+    <TableView fx:id="staffTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="staffIdColumn" text="Staff ID"/>
+            <TableColumn fx:id="nameColumn" text="Name"/>
+            <TableColumn fx:id="positionColumn" text="Position"/>
+            <TableColumn fx:id="currentShiftColumn" text="Current Shift"/>
+            <TableColumn fx:id="actionsColumn" text="Actions"/>
+        </columns>
+    </TableView>
+
+    <!-- Shift Management Section -->
+    <TitledPane text="Shift Management" expanded="false">
+        <VBox spacing="10">
+            <!-- Shift Calendar -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <DatePicker fx:id="shiftDate" promptText="Select Date"/>
+                <ComboBox fx:id="staffSelector" promptText="Select Staff"/>
+                <ComboBox fx:id="shiftSelector" promptText="Select Shift"/>
+                <Button text="Assign Shift" onAction="#handleAssignShift"
+                        styleClass="primary-button"/>
+            </HBox>
+            
+            <!-- Shift Table -->
+            <TableView fx:id="shiftTable">
+                <columns>
+                    <TableColumn fx:id="shiftStaffColumn" text="Staff"/>
+                    <TableColumn fx:id="shiftDateColumn" text="Date"/>
+                    <TableColumn fx:id="startTimeColumn" text="Start Time"/>
+                    <TableColumn fx:id="endTimeColumn" text="End Time"/>
+                    <TableColumn fx:id="shiftActionsColumn" text="Actions"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </TitledPane>
+
+    <!-- Password Reset Section (Admin Only) -->
+    <TitledPane fx:id="passwordResetSection" text="Password Reset" expanded="false">
+        <VBox spacing="10">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ComboBox fx:id="resetStaffSelector" promptText="Select Staff"
+                         HBox.hgrow="ALWAYS"/>
+                <Button text="Reset Password" onAction="#handleResetPassword"
+                        styleClass="danger-button"/>
+            </HBox>
+            <Label text="Note: This will reset the staff member's password to a default value. 
+                         They will be required to change it upon their next login."
+                   wrapText="true" styleClass="note-text"/>
+        </VBox>
+    </TitledPane>
+
+    <!-- Staff Details Dialog -->
+    <fx:define>
+        <Dialog fx:id="staffDialog" title="Staff Details">
+            <dialogPane>
+                <DialogPane>
+                    <content>
+                        <GridPane hgap="10" vgap="10">
+                            <padding>
+                                <Insets top="20" right="20" bottom="20" left="20"/>
+                            </padding>
+
+                            <Label text="Staff ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                            <TextField fx:id="staffIdField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                            <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                            <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                            <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                            <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                            <Label text="Middle Name:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                            <TextField fx:id="middleNameField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                            <Label text="Position:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                            <ComboBox fx:id="positionField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                            <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                        </GridPane>
+                    </content>
+                    <ButtonType fx:constant="OK"/>
+                    <ButtonType fx:constant="CANCEL"/>
+                </DialogPane>
+            </dialogPane>
+        </Dialog>
+    </fx:define>
+
+    <stylesheets>
+        <URL value="@../styles/main.css"/>
+    </stylesheets>
+</VBox>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.hotelreservation.controller.ManageGuestsController"
+      spacing="20" styleClass="content-pane">
+    
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox styleClass="profile-header" spacing="20">
+        <VBox spacing="5">
+            <Text text="Manage Guests" styleClass="page-title"/>
+            <Text text="View and manage guest information" styleClass="subtitle-text"/>
+        </VBox>
+    </HBox>
+
+    <!-- Search and Filter Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Search guests..." 
+                  HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="sortByComboBox" promptText="Sort by"/>
+        <Button text="Search" onAction="#handleSearch" 
+                styleClass="primary-button"/>
+    </HBox>
+
+    <!-- Guests Table -->
+    <TableView fx:id="guestsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="guestIdColumn" text="Guest ID"/>
+            <TableColumn fx:id="firstNameColumn" text="First Name"/>
+            <TableColumn fx:id="lastNameColumn" text="Last Name"/>
+            <TableColumn fx:id="contactNumberColumn" text="Contact Number"/>
+            <TableColumn fx:id="actionsColumn" text="Actions"/>
+        </columns>
+    </TableView>
+
+    <!-- Action Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Add New Guest" onAction="#showAddGuestDialog"
+                styleClass="primary-button"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@../styles/main.css"/>
+    </stylesheets>
+</VBox>

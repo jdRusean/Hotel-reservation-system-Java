@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.hotelreservation.controller.NotificationsController"
+      spacing="20" styleClass="content-pane">
+    
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox styleClass="profile-header" spacing="20">
+        <VBox spacing="5">
+            <Text text="Notifications" styleClass="page-title"/>
+            <Text fx:id="subtitleText" styleClass="subtitle-text"/>
+        </VBox>
+    </HBox>
+
+    <!-- Send Notification Section (Admin/Manager Only) -->
+    <VBox fx:id="sendNotificationSection" spacing="10" styleClass="section">
+        <TextArea fx:id="messageField" promptText="Type your message here..." 
+                  prefRowCount="3"/>
+        <HBox alignment="CENTER_RIGHT">
+            <Button text="Send Notification" onAction="#handleSendNotification"
+                    styleClass="primary-button"/>
+        </HBox>
+    </VBox>
+
+    <!-- Notifications List -->
+    <TableView fx:id="notificationsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="dateColumn" text="Date"/>
+            <TableColumn fx:id="senderColumn" text="From"/>
+            <TableColumn fx:id="messageColumn" text="Message"/>
+            <TableColumn fx:id="statusColumn" text="Status"/>
+            <TableColumn fx:id="actionsColumn" text="Actions"/>
+        </columns>
+    </TableView>
+
+    <stylesheets>
+        <URL value="@../styles/main.css"/>
+    </stylesheets>
+</VBox>

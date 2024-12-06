@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.hotelreservation.controller.ProfileController"
+      spacing="20" styleClass="content-pane">
+    
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <!-- Profile Header -->
+    <HBox styleClass="profile-header" spacing="20">
+        <VBox spacing="5">
+            <Text text="Staff Profile" styleClass="page-title"/>
+            <Text fx:id="staffPositionText" styleClass="subtitle-text"/>
+        </VBox>
+    </HBox>
+
+    <!-- Profile Information -->
+    <GridPane vgap="15" hgap="20">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100" prefWidth="150"/>
+            <ColumnConstraints minWidth="200" prefWidth="300"/>
+        </columnConstraints>
+
+        <!-- Staff ID -->
+        <Label text="Staff ID:" styleClass="field-label" 
+               GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label fx:id="staffIdLabel" styleClass="field-value"
+               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <!-- Name -->
+        <Label text="Name:" styleClass="field-label"
+               GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label fx:id="staffNameLabel" styleClass="field-value"
+               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <!-- Position -->
+        <Label text="Position:" styleClass="field-label"
+               GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label fx:id="positionLabel" styleClass="field-value"
+               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <!-- Shift Time -->
+        <Label text="Current Shift:" styleClass="field-label"
+               GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Label fx:id="shiftTimeLabel" styleClass="field-value"
+               GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    </GridPane>
+
+    <!-- Change Password Section -->
+    <VBox spacing="15" styleClass="password-section">
+        <Text text="Change Password" styleClass="section-title"/>
+        
+        <GridPane vgap="10" hgap="20">
+            <columnConstraints>
+                <ColumnConstraints minWidth="150" prefWidth="150"/>
+                <ColumnConstraints minWidth="200" prefWidth="300"/>
+            </columnConstraints>
+
+            <!-- Current Password -->
+            <Label text="Current Password:" styleClass="field-label"
+                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <PasswordField fx:id="currentPasswordField" 
+                          GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <!-- New Password -->
+            <Label text="New Password:" styleClass="field-label"
+                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <PasswordField fx:id="newPasswordField"
+                          GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <!-- Confirm Password -->
+            <Label text="Confirm Password:" styleClass="field-label"
+                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <PasswordField fx:id="confirmPasswordField"
+                          GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        </GridPane>
+
+        <!-- Change Password Button -->
+        <HBox alignment="CENTER_RIGHT">
+            <Button text="Change Password" 
+                    onAction="#handleChangePassword"
+                    styleClass="primary-button"/>
+        </HBox>
+    </VBox>
+
+    <stylesheets>
+        <URL value="@../styles/main.css"/>
+    </stylesheets>
+</VBox>

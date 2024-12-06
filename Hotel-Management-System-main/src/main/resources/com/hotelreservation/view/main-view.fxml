@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.hotelreservation.controller.MainController"
+            style="-fx-background-color: white;">
+    
+    <left>
+<VBox styleClass="side-panel" spacing="20">
+            <HBox alignment="CENTER" maxWidth="Infinity">
+                <ImageView fitHeight="150" fitWidth="200" preserveRatio="true">
+                    <image>
+                        <Image url="@../LogoName.png"/>
+                    </image>
+                </ImageView>
+            </HBox>
+            
+            <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+                <VBox spacing="10" style="-fx-padding: 10;">
+                    <!-- Profile Button -->
+                    <Button text="Profile" onAction="#showProfile" 
+                            styleClass="menu-button" maxWidth="Infinity"/>
+                    
+                    <!-- Manage Guests Button (Manager Only) -->
+                    <Button fx:id="manageGuestsButton" text="Manage Guests" onAction="#manageGuests" 
+                            styleClass="menu-button" maxWidth="Infinity"/>
+                    
+                    <!-- Notifications Button -->
+                    <Button text="Notifications" onAction="#showNotifications" 
+                            styleClass="menu-button" maxWidth="Infinity"/>
+                    
+                    <!-- Promos Button -->
+                    <Button fx:id="promosButton" text="Promos" onAction="#showPromos" 
+                            styleClass="menu-button" maxWidth="Infinity"/>
+                    
+                    <!-- Reservations List Button -->
+                    <Button text="Reservations List" onAction="#showReservations" 
+                            styleClass="menu-button" maxWidth="Infinity"/>
+                    
+                    <!-- Availability Calendar Button -->
+                    <Button text="Availability Calendar" onAction="#showAvailability" 
+                            styleClass="menu-button" maxWidth="Infinity"/>
+                    
+                    <!-- Staff Management Button (Admin and Manager Only) -->
+                    <Button fx:id="staffManagementButton" text="Staff Management" onAction="#manageStaff" 
+                            styleClass="menu-button" maxWidth="Infinity"/>
+                    
+                    <!-- Staff Logs Button (Admin Only) -->
+                    <Button fx:id="staffLogsButton" text="Staff Logs" onAction="#showStaffLogs" 
+                            styleClass="menu-button" maxWidth="Infinity"/>
+                    
+                    <!-- Settings Button -->
+                    <Button text="Settings" onAction="#showSettings" 
+                            styleClass="menu-button" maxWidth="Infinity"/>
+                    
+                    <!-- Logout Button -->
+                    <Button text="Logout" onAction="#handleLogout" 
+                            styleClass="menu-button" maxWidth="Infinity"/>
+                </VBox>
+            </ScrollPane>
+        </VBox>
+    </left>
+    
+    <center>
+        <StackPane fx:id="contentArea" style="-fx-background-color: white;">
+            <padding>
+                <Insets top="0" right="0" bottom="0" left="0"/>
+            </padding>
+            <!-- This is where different views will be loaded -->
+            <Label text="Welcome to Hotel Management System" 
+                   style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+        </StackPane>
+    </center>
+    
+    <stylesheets>
+        <URL value="@../styles/main.css"/>
+    </stylesheets>
+</BorderPane>

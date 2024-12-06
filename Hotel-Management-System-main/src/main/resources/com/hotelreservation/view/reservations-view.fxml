@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.hotelreservation.controller.ReservationsController"
+      spacing="20" styleClass="content-pane">
+    
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox styleClass="profile-header" spacing="20">
+        <VBox spacing="5">
+            <Text text="Reservations" styleClass="page-title"/>
+            <Text text="Manage hotel reservations" styleClass="subtitle-text"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="New Reservation" onAction="#showNewReservationDialog"
+                styleClass="primary-button"/>
+    </HBox>
+
+    <!-- Search and Filter Section -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Search reservations..." 
+                  HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="statusFilter" promptText="Status"/>
+        <DatePicker fx:id="dateFilter" promptText="Date"/>
+        <Button text="Search" onAction="#handleSearch" 
+                styleClass="primary-button"/>
+    </HBox>
+
+    <!-- Reservations Table -->
+    <TableView fx:id="reservationsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="bookingIdColumn" text="Booking ID"/>
+            <TableColumn fx:id="guestNameColumn" text="Guest Name"/>
+            <TableColumn fx:id="roomNumberColumn" text="Room"/>
+            <TableColumn fx:id="checkInColumn" text="Check In"/>
+            <TableColumn fx:id="checkOutColumn" text="Check Out"/>
+            <TableColumn fx:id="statusColumn" text="Status"/>
+            <TableColumn fx:id="totalAmountColumn" text="Total Amount"/>
+            <TableColumn fx:id="actionsColumn" text="Actions"/>
+        </columns>
+    </TableView>
+
+    <!-- Summary Section -->
+    <GridPane hgap="20" vgap="10" styleClass="summary-section">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <VBox spacing="5" GridPane.columnIndex="0">
+            <Text text="Total Reservations" styleClass="summary-label"/>
+            <Text fx:id="totalReservationsText" styleClass="summary-value"/>
+        </VBox>
+
+        <VBox spacing="5" GridPane.columnIndex="1">
+            <Text text="Active Reservations" styleClass="summary-label"/>
+            <Text fx:id="activeReservationsText" styleClass="summary-value"/>
+        </VBox>
+
+        <VBox spacing="5" GridPane.columnIndex="2">
+            <Text text="Today's Check-ins" styleClass="summary-label"/>
+            <Text fx:id="todayCheckInsText" styleClass="summary-value"/>
+        </VBox>
+    </GridPane>
+
+    <stylesheets>
+        <URL value="@../styles/main.css"/>
+    </stylesheets>
+</VBox>

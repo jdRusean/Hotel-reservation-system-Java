@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.hotelreservation.controller.SettingsController"
+      spacing="20" styleClass="content-pane">
+    
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox styleClass="settings-header" spacing="20">
+        <VBox spacing="5">
+            <Text text="Settings" styleClass="page-title"/>
+            <Text text="Customize your application preferences" styleClass="subtitle-text"/>
+        </VBox>
+    </HBox>
+
+    <!-- Settings Content -->
+    <VBox spacing="30" styleClass="settings-content">
+        <!-- Appearance Section -->
+        <TitledPane text="Appearance" expanded="true">
+            <VBox spacing="20">
+                <!-- Dark Mode Toggle -->
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <Label text="Dark Mode" styleClass="setting-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <ToggleButton fx:id="darkModeToggle" 
+                                text="Enable Dark Mode" 
+                                styleClass="setting-toggle"/>
+                </HBox>
+
+                <!-- Resolution Selection -->
+                <VBox spacing="10">
+                    <Label text="Resolution" styleClass="setting-label"/>
+                    <ComboBox fx:id="resolutionComboBox" 
+                             promptText="Select Resolution"
+                             styleClass="setting-combo-box"
+                             HBox.hgrow="ALWAYS"/>
+                    <Label text="Changes will take effect after restart" 
+                           styleClass="note-text"/>
+                </VBox>
+            </VBox>
+        </TitledPane>
+
+        <!-- Save Button -->
+        <HBox alignment="CENTER_RIGHT">
+            <Button text="Save Changes" 
+                    onAction="#handleSaveSettings"
+                    styleClass="primary-button"/>
+        </HBox>
+    </VBox>
+
+    <stylesheets>
+        <URL value="@../styles/main.css"/>
+    </stylesheets>
+</VBox>
